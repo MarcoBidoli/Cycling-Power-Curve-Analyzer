@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cycling Power Curve Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <nav class="tabs">
+        <button class="tab-btn active" onclick="showTab('analyzer')">Analyzer</button>
+        <button class="tab-btn" onclick="showTab('about')">About</button>
+    </nav>
+
+    <div id="analyzerTab" class="tab-content active">
+        <h2>Cycling Power Curve Analyzer</h2>
+        <p>Upload a <code>.zip</code> file containing your <code>.fit</code> activity files. Processing is performed locally on your device.</p>
+        
+        <div class="upload-section" id="dropZone">
+            <p>Click or Drag & Drop your ZIP file here</p>
+            <input type="file" id="fileInput" accept=".zip">
+            <span id="fileName"></span>
+        </div>
+
+        <div class="input-group">
+            <label>Analysis Durations:</label>
+            <div class="input-row">
+                <input type="text" id="durationInput" placeholder="e.g., 1s, 5m, 20m, 1h">
+                <span class="hint">Type and press Enter to add</span>
+            </div>
+            <div class="tag-container" id="tagContainer"></div>
+        </div>
+
+        <button id="computeBtn" disabled>Compute Power Curve</button>
+        <div id="status"></div>
+
+        <div class="chart-wrapper">
+            <canvas id="powerChart"></canvas>
+        </div>
+
+        <h3>Power Density Heatmap</h3>
+        <div class="chart-wrapper">
+            <canvas id="heatmapChart"></canvas>
+        </div>
+
+        <div id="tableContainer" class="table-container"></div>
+    </div>
+
+    <div id="aboutTab" class="tab-content">
+        <h2>About This Tool</h2>
+        <div class="about-text">
+            <p>This tool was inspired by this perspective on cycling performance:</p>
+            
+            <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">1/<br>Cyclists get one power-duration curve. Best 5s, best 1min, best 20min, best hour: the maximum effort at each duration, traced into a single line. That curve is the standard object for profiling, modeling, and comparing riders.</p>&mdash; one of you (@Captain7bag) <a href="https://x.com/Captain7bag/status/2066933829626143113?ref_src=twsrc%5Etfw">June 16, 2026</a></blockquote> <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+
+            <p>While the standard Power Duration curve shows your <em>absolute best</em>, it often fails to represent what you can <strong>consistently</strong> do on a typical day. I built this tool because I needed a way to see not just my peak performance, but what is realistic during a Sunday ride with friends—helping you understand the pace you can maintain on a 15-minute climb without blowing up.</p>
+            
+            <h3>Data Quality & Coverage</h3>
+            <p>The accuracy and depth of these charts depend entirely on the data you provide. To get a realistic view of your "repeatable" power, you should include a wide range of activities: your strongest rides, race efforts, and even your "bad days." Including only your best rides will skew the percentiles upward and won't reflect your actual day-to-day capability.</p>
+
+            <h3>How to get your data</h3>
+            <p>You can download your entire activity history in a single ZIP file from platforms like Intervals.icu. Follow this guide to export your data:</p>
+            <p><a href="https://forum.intervals.icu/t/how-to-export-data-from-intervals-icu/46011/3" target="_blank">How to export data from Intervals.icu</a></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        MarcoBidoli, 2026
+    </footer>
+</div>
+
+<script src="js/computation.js"></script>
+<script src="js/interface.js"></script>
+</body>
+</html>
