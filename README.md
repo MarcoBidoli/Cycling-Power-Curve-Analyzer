@@ -4,7 +4,7 @@ A web-based tool designed to help cyclists understand their power capabilities b
 
  While standard power-duration curves show your all-time best efforts, this tool reveal what you can **consistently** and **repeatably** achieve on a typical day.
 
-Try it now [marcobidoli.github.io/Cycling-Power-Curve-Analyzer](https://marcobidoli.github.io/Cycling-Power-Curve-Analyzer/)
+ ![Screenshot of the page](screenshot.png)
 
 ## Features
 
